@@ -5,9 +5,41 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Chatterbox</title>
+
+	<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-	Hello, World!
+	
+	<nav>
+		<a href="/" class="siteBrand">
+			<img src="/assets/images/catter.svg" alt="Chatterbox logo" class="siteBrand__logo">
+			Chatterbox
+		</a>
+	</nav>
+
+	<article class="mainChatView">
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
+		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>
+	</article>
+
+	<article class="chatMessage">
+		<input type="text" class="chatMessage__input" placeholder="What's on your mind?">
+		<button class="chatMessage__button">Send</button>
+	</article>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
