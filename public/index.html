@@ -5,16 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<meta name="theme-color" content="#add8e6">
-
 	<meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Chatterbox">
+	<meta name="apple-mobile-web-app-status-bar-style" content="blue">
+	<meta name="apple-mobile-web-app-title" content="Chatterbox">
+	
 	<link rel="apple-touch-icon" href="/assets/images/catter-152x152.png">
-	<link rel="shortcut icon" href="/assets/images/catter-128x128.png" type="image/png">
+
+	<meta name="description" content="A simple chat app with no login">
+
+	<meta name="theme-color" content="#ADD8E6">
 
 	<title>Chatterbox</title>
-
+	
+	<link rel="shortcut icon" href="/assets/images/catter-128x128.png" type="image/png">
 	<link rel="stylesheet" href="/assets/css/style.css">
 	<link rel="manifest" href="/manifest.json">
 </head>
@@ -28,10 +31,7 @@
 		<button id="butInstall" aria-label="Install" hidden><img src="/assets/images/install.svg"></button>
 	</nav>
 
-	<article class="mainChatView">
-		<!--<p class="mainChatView__me"><span class="mainChatView__name">Brian</span> Wazzaaaaaaa!?</p>
-		<p class="mainChatView__other"><span class="mainChatView__name">Egon</span> Wazzaaaaaaa!?</p>-->
-	</article>
+	<article class="mainChatView"></article>
 
 	<article class="chatMessage">
 		<form class="chatMessage__form hidden">
@@ -138,11 +138,14 @@
 	</script>
 
 	<script>
-		if ('serviceWorker' in navigator) {
-			window.addEventListener('load', () => {
-				navigator.serviceWorker.register('/service-worker.js')
-					.then((reg) => {
-						console.log('Service worker registered.', reg);
+		if("serviceWorker" in navigator) {
+			window.addEventListener("load", function() {
+				navigator.serviceWorker.register("/service-worker.js")
+					.then(function(reg) {
+						console.log("Service Worker Registered", reg);
+					})
+					.catch(function(err) {
+						console.error(err);
 					});
 			});
 		}
