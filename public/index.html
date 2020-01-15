@@ -4,9 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<meta name="theme-color" content="#add8e6">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Chatterbox">
+	<link rel="apple-touch-icon" href="/assets/images/catter-152x152.png">
+	<link rel="shortcut icon" href="/assets/images/catter-128x128.png" type="image/png">
+
 	<title>Chatterbox</title>
 
 	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="manifest" href="/manifest.json">
 </head>
 <body>
 	
@@ -15,6 +25,7 @@
 			<img src="/assets/images/catter.svg" alt="Chatterbox logo" class="siteBrand__logo">
 			Chatterbox
 		</a>
+		<button id="butInstall" aria-label="Install" hidden><img src="/assets/images/install.svg"></button>
 	</nav>
 
 	<article class="mainChatView">
@@ -34,6 +45,7 @@
 	</article>
 
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="/assets/js/install.js"></script>
 	<script>
 		var socket = io();
 		var plop = new Audio("/assets/media/plop.mp3");
@@ -71,7 +83,7 @@
 
 			let time = Date.now();
 
-			socket.send({ msg: chatInput.value, timestamp: time });
+			socket.send({ msg: chatInput.value, timestamp: time, username: user });
 			
 			let p = document.createElement("p");
 			p.className = "mainChatView__me";
@@ -93,7 +105,14 @@
 
 			let p = document.createElement("p");
 			p.className = "mainChatView__other";
-			p.innerHTML = msg.msg;
+			
+			let span = document.createElement("span");
+			span.className = "mainChatView__name";
+			span.innerText = msg.username;
+
+			p.appendChild(span);
+			
+			p.innerHTML += msg.msg;
 
 			let small = document.createElement("small");
 			small.className = "timestamp left";
@@ -116,6 +135,17 @@
 			plop.play();
 			chatView.scrollTop = chatView.scrollHeight;
 		});
+	</script>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/service-worker.js')
+					.then((reg) => {
+						console.log('Service worker registered.', reg);
+					});
+			});
+		}
 	</script>
 </body>
 </html>
