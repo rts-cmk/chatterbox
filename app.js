@@ -7,7 +7,7 @@ app.use(express.static("public"));
 
 io.on("connection", handleSocketConnection);
 
-server.listen(process.env.PORT || 3000, handlerServer);
+server.listen(process.env.PORT || 3001, handlerServer);
 
 function handleSocketConnection(socket) {
 	console.log("A user connected");
